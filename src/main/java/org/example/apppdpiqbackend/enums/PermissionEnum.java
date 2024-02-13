@@ -1,0 +1,32 @@
+package org.example.apppdpiqbackend.enums;
+
+public enum PermissionEnum {
+    BLOCK_USER,
+    UNBLOCK_USER,
+
+    ADD_SPECIALTY,
+    GET_SPECIALTY,
+    EDIT_SPECIALTY,
+    DELETE_SPECIALTY,
+
+    ADD_MODULE,
+    GET_MODULE,
+    EDIT_MODULE,
+    DELETE_MODULE,
+
+    ADD_LESSON,
+    GET_LESSON,
+    EDIT_LESSON,
+    DELETE_LESSON,
+
+    ADD_QUESTION,
+    GET_QUESTION,
+    EDIT_QUESTION,
+    DELETE_QUESTION,
+
+    ADD_ANSWER,
+    GET_ANSWER,
+    EDIT_ANSWER,
+    DELETE_ANSWER,
+
+}
