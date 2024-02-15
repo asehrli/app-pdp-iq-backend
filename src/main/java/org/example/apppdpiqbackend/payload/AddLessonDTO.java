@@ -6,5 +6,5 @@ import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 public record AddLessonDTO(@NotBlank(message = "Name is required") String name,
-                           @NotNull(message = "Module is required") UUID id) {
+                           @NotNull(message = "Module is required") UUID moduleId) {
 }

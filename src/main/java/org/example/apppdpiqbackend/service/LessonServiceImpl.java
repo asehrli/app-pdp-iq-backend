@@ -35,7 +35,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public ApiResponse<LessonDTO> add(AddLessonDTO addLessonDTO) {
-        if (lessonRepository.existsByName(addLessonDTO.name()))
+        if (lessonRepository.existsByNameAndIdNot(addLessonDTO.name(),addLessonDTO.moduleId()))
             throw new MyConflictException("Lesson already exists!");
 
         return ApiResponse.success(lessonMapper.toDto(lessonRepository.save(lessonMapper.toLesson(addLessonDTO))));
