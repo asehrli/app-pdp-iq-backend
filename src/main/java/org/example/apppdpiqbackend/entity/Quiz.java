@@ -28,9 +28,4 @@ public class Quiz {
     Timestamp createdAt;
 
     Timestamp expiresAt; // after expiresAt, Quiz will be old
-
-    @ManyToOne(optional = false)
-    Question question;
-
-    boolean right;
 }

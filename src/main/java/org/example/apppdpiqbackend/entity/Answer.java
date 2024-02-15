@@ -25,5 +25,5 @@ public class Answer {
     @ManyToOne(optional = false)
     Question question;
 
-    boolean right;
+    boolean correct;
 }
