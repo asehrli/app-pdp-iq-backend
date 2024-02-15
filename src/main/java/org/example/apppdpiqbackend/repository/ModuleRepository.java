@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface ModuleRepository extends JpaRepository<Module, UUID> {
-    boolean existsByName(String name);
-     boolean existsByNameAndIdNot(String name , UUID id);
+    boolean existsByNameAndId(String name, UUID id);
+
+    boolean existsByNameAndIdNot(String name, UUID id);
 }
 
