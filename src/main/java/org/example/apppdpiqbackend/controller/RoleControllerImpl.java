@@ -18,20 +18,17 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class RoleControllerImpl implements RoleController {
     private final RoleService roleService;
+
     @Override
     public HttpEntity<ApiResponse<RoleDto>> add(AddRoleDto addRoleDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(roleService.add(addRoleDto));
     }
 
     @Override
-    public HttpEntity<ApiResponse<RoleDto>> one(UUID id) {
-        return ResponseEntity.ok(roleService.one(id));
-    }
+    public HttpEntity<ApiResponse<RoleDto>> one(UUID id) {return ResponseEntity.ok(roleService.one(id));}
 
     @Override
-    public HttpEntity<ApiResponse<List<RoleDto>>> all() {
-        return ResponseEntity.ok(roleService.all());
-    }
+    public HttpEntity<ApiResponse<List<RoleDto>>> all() {return ResponseEntity.ok(roleService.all());}
 
     @Override
     public HttpEntity<ApiResponse<RoleDto>> edit(UUID id, EditRoleDto editRoleDto) {

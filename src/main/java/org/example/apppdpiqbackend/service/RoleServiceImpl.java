@@ -21,7 +21,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RoleServiceImpl implements RoleService {
+
     final RoleRepository roleRepository;
+
     final RoleMapper roleMapper;
     @Override
     public ApiResponse<RoleDto> add(AddRoleDto addRoleDto) {
@@ -33,7 +35,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public ApiResponse<RoleDto> one(UUID id) {
-        return ApiResponse.success(roleMapper.toDto(roleRepository.findById(id).orElseThrow(() -> new MyNotFoundException("Role not found by id"))));
+        return ApiResponse.success(roleMapper.toDto(
+                roleRepository.findById(id).orElseThrow(() ->
+                        new MyNotFoundException("Role not found by id"))));
     }
 
     @Override

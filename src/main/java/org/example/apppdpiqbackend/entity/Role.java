@@ -24,6 +24,6 @@ public class Role {
     @Column(nullable = false, unique = true)
     String name;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     List<PermissionEnum> permissions;
 }
