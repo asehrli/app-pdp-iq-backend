@@ -1,7 +1,9 @@
 package org.example.apppdpiqbackend.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.apppdpiqbackend.payload.AddModuleDTO;
 import org.example.apppdpiqbackend.payload.ApiResponse;
+import org.example.apppdpiqbackend.payload.EditModuleDTO;
 import org.example.apppdpiqbackend.payload.ModuleDTO;
 import org.example.apppdpiqbackend.service.ModelService;
 import org.springframework.http.HttpEntity;

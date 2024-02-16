@@ -1,5 +1,6 @@
 package org.example.apppdpiqbackend.controller;
 
+import org.example.apppdpiqbackend.payload.AddLessonDTO;
 import org.example.apppdpiqbackend.payload.ApiResponse;
 import org.example.apppdpiqbackend.payload.EditLessonDTO;
 import org.example.apppdpiqbackend.payload.LessonDTO;
