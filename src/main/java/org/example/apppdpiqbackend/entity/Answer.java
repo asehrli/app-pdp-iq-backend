@@ -22,8 +22,7 @@ public class Answer {
     @Column(nullable = false, unique = true)
     String text;
 
+    boolean correct;
     @ManyToOne(optional = false)
     Question question;
-
-    boolean correct;
 }

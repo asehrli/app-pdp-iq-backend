@@ -1,27 +1,3 @@
-default:
-  user:
-    firstname: Alisher
-    lastname: Farkhodov
-    enabled: true
-    email: alisher@gmail.com
-    password: 7410
-  role:
-    name: SUPER_ADMIN
-
-token:
-  secret-key: YUVG@*&GYQG(*GQT*@&GDQs98P28dhy!2god8712
-  expires: 3600000
-
-
-# write your config
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/app_pdp_iq
-    password: 7410
-    username: postgres
-
-  # first create then update
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
+  profiles:
+    active: test
