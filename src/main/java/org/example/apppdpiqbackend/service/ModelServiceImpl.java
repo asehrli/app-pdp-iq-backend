@@ -30,10 +30,11 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public ApiResponse<ModuleDTO> add(AddModuleDTO addModelDTO) {
-        if (moduleRepository.existsByNameAndSpecialty(addModelDTO.name(), addModelDTO.specialtyId())) {
+        if (moduleRepository.existsByNameAndSpecialtyId(addModelDTO.name(), addModelDTO.specialtyId())) {
             throw new MyConflictException("Module already exists! ");
         }
-        return ApiResponse.success(moduleMapper.toDto(moduleRepository.save(moduleMapper.toModel(addModelDTO))));
+
+        return ApiResponse.success(moduleMapper.toDto(moduleRepository.save(moduleMapper.toModule(addModelDTO))));
     }
 
     @Override
@@ -48,11 +49,10 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    public ApiResponse<ModuleDTO> edit(UUID id, EditModuleDTO editModelDTO) {
+    public ApiResponse<ModuleDTO> edit(UUID id, EditModuleDTO editModuleDTO) {
         Module editModule = moduleRepository.findById(id).orElseThrow(() -> new MyNotFoundException("Module not found by id"));
 
-        if (moduleRepository.existsByNameAndSpecialtyIdAndIdNot
-                (editModule.getName(), editModelDTO.specialtyId(), id))
+        if (moduleRepository.existsByNameAndSpecialtyIdAndIdNot(editModule.getName(), editModuleDTO.moduleId(),id))
             throw new MyConflictException("Module already exists!");
 
         editModule.setName(editModule.getName());

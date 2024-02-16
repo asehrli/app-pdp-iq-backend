@@ -35,7 +35,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public ApiResponse<LessonDTO> add(AddLessonDTO addLessonDTO) {
-        if (lessonRepository.existsByNameAndIdNot(addLessonDTO.name(),addLessonDTO.moduleId()))
+        if (lessonRepository.existsByNameAndModuleId(addLessonDTO.name(),addLessonDTO.moduleId()))
             throw new MyConflictException("Lesson already exists!");
 
         return ApiResponse.success(lessonMapper.toDto(lessonRepository.save(lessonMapper.toLesson(addLessonDTO))));
@@ -52,11 +52,10 @@ public class LessonServiceImpl implements LessonService {
     public ApiResponse<LessonDTO> edit(UUID id, EditLessonDTO editLessonDTO) {
         Lesson editLesson = lessonRepository.findById(id).orElseThrow(() -> new MyNotFoundException("Lesson not found by id"));
 
-        if (lessonRepository.existsByNameAndIdNot(editLesson.getName(), id))
+        if (lessonRepository.existsByNameAndModuleIdAndIdNot(editLesson.getName(),editLessonDTO.moduleId(), id))
             throw new MyConflictException("Lesson already exists!");
 
         editLesson.setName(editLesson.getName());
-        editLesson.setModule(editLesson.getModule());
 
         return ApiResponse.success(lessonMapper.toDto(lessonRepository.save(editLesson)));
     }
