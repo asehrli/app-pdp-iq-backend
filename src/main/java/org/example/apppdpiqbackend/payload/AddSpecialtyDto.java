@@ -1,19 +1,20 @@
 package org.example.apppdpiqbackend.payload;
 
-import lombok.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.util.UUID;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class SpecialtyDto {
-    UUID id;
+public class AddSpecialtyDto {
+    UUID uuid;
+    @NotBlank
     String name;
-    AttachmentDto attachment;
+    @NotBlank
     String description;
 }
