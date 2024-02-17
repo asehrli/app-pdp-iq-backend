@@ -25,3 +25,6 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
+
+upload:
+  directory: src/main/resources/static/
