@@ -15,6 +15,11 @@ token:
 
 # write your config
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 3MB
+      max-request-size: 10MB
   datasource:
     url: jdbc:postgresql://localhost:5432/app_pdp_iq
     username: postgres
