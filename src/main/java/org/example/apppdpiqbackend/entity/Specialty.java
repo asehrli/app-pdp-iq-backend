@@ -24,7 +24,7 @@ public class Specialty {
     @Column(nullable = false, unique = true)
     String name;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.REMOVE)
     Attachment photo;
 
     String description;

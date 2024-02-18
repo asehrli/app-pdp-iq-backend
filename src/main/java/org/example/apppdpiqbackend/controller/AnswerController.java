@@ -18,12 +18,12 @@ public interface AnswerController {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ADD_ANSWER')")
-    HttpEntity<ApiResponse<AnswerDto>> add(@Valid AnswerDto answerDto);
+    HttpEntity<ApiResponse<AnswerDto>> add(@Valid @RequestBody AnswerDto answerDto);
 
     @PutMapping("/edit/{answerId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasRole('EDIT_ANSWER')")
-    HttpEntity<ApiResponse<AnswerDto>> edit(@PathVariable UUID answerId, @Valid AnswerDto answerDto);
+    HttpEntity<ApiResponse<AnswerDto>> edit(@PathVariable UUID answerId, @Valid @RequestBody AnswerDto answerDto);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)

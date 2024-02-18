@@ -3,9 +3,11 @@ package org.example.apppdpiqbackend.exception;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.*;
@@ -13,9 +15,19 @@ import java.util.*;
 /*@ControllerAdvice
 @ResponseBody*/
 @RestControllerAdvice // ControllerAdvice va ResponseBody anotatsiyalari birgalikda RestController anotatsiyasini beradi
-public class GlobalExceptionHandler{
+public class GlobalExceptionHandler {
     @ExceptionHandler(MyNotFoundException.class)
     public ResponseEntity<ErrorDTO> error_404(MyNotFoundException e, HttpServletRequest req) {
+        return ResponseEntity.status(404)
+                .body(ErrorDTO.builder()
+                        .errorPath(req.getRequestURI())
+                        .errorCode(404)
+                        .errorBody(e.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(MyConflictException.class)
+    public ResponseEntity<ErrorDTO> error_404(MyConflictException e, HttpServletRequest req) {
         return ResponseEntity.status(404)
                 .body(ErrorDTO.builder()
                         .errorPath(req.getRequestURI())
@@ -41,6 +53,25 @@ public class GlobalExceptionHandler{
                         .errorPath(req.getRequestURI())
                         .errorCode(404)
                         .errorBody(errorMessage)
+                        .build());
+    }
+
+    @ExceptionHandler(MultipartException.class)
+    public ResponseEntity<ErrorDTO> error_404(MultipartException e, HttpServletRequest req) {
+        return ResponseEntity.status(404)
+                .body(ErrorDTO.builder()
+                        .errorPath(req.getRequestURI())
+                        .errorCode(404)
+                        .errorBody(e.getMessage())
+                        .build());
+    }
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<ErrorDTO> error_404(HttpMediaTypeNotSupportedException e, HttpServletRequest req) {
+        return ResponseEntity.status(404)
+                .body(ErrorDTO.builder()
+                        .errorPath(req.getRequestURI())
+                        .errorCode(404)
+                        .errorBody(e.getMessage())
                         .build());
     }
 }
