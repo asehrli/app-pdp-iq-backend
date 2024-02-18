@@ -32,7 +32,6 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class SpecialtyService {
-    private final TransactionTemplate transactionTemplate;
     private final AttachmentRepository attachmentRepository;
     private final SpecialityRepository specialityRepository;
     private final AttachmentMapper attachmentMapper;
